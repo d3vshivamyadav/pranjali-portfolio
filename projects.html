@@ -1,0 +1,1065 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5">
+  <title>Projects · Pranjali Yadav</title>
+  <meta name="description" content="Explore Pranjali Yadav's portfolio projects including web applications, tools, and full-stack developments.">
+  <meta name="keywords" content="Pranjali Yadav, projects, portfolio, web development, student management, calculator">
+  
+  <meta property="og:title" content="Projects · Pranjali Yadav">
+  <meta property="og:description" content="BCA Final Year Student · Developer &amp; Designer">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://pranjali.dev/projects.html">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Projects · Pranjali Yadav">
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚀</text></svg>">
+
+  <style>
+    /* ============================================================
+       CSS VARIABLES & RESET
+       ============================================================ */
+    :root {
+      --primary: #2563EB;
+      --secondary: #7C3AED;
+      --accent: #06B6D4;
+      --bg: #F8FAFC;
+      --dark: #111827;
+      --text: #1F2937;
+      --text-light: #6B7280;
+      --white: #ffffff;
+      --glass-bg: rgba(255, 255, 255, 0.6);
+      --glass-border: rgba(255, 255, 255, 0.25);
+      --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.08);
+      --shadow-hover: 0 20px 40px -12px rgba(0, 0, 0, 0.15);
+      --radius: 24px;
+      --radius-sm: 16px;
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --font: 'Poppins', sans-serif;
+      --navbar-bg: rgba(255, 255, 255, 0.8);
+      --navbar-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+      --card-bg: var(--white);
+      --body-bg: var(--bg);
+      --text-color: var(--text);
+      --border-light: #e5e7eb;
+    }
+
+    /* Dark mode variables */
+    [data-theme="dark"] {
+      --bg: #0f172a;
+      --dark: #e2e8f0;
+      --text: #f1f5f9;
+      --text-light: #94a3b8;
+      --white: #1e293b;
+      --glass-bg: rgba(30, 41, 59, 0.7);
+      --glass-border: rgba(255, 255, 255, 0.08);
+      --shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.4);
+      --shadow-hover: 0 20px 40px -12px rgba(0, 0, 0, 0.6);
+      --navbar-bg: rgba(15, 23, 42, 0.85);
+      --navbar-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+      --card-bg: #1e293b;
+      --body-bg: #0f172a;
+      --text-color: #f1f5f9;
+      --border-light: #334155;
+    }
+
+    /* Reset & base */
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body {
+      font-family: var(--font);
+      background: var(--body-bg);
+      color: var(--text-color);
+      line-height: 1.6;
+      transition: background 0.3s, color 0.3s;
+      padding-top: 80px;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul {
+      list-style: none;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    .section-padding {
+      padding: 80px 0;
+    }
+
+    /* ============================================================
+       LOADING SCREEN
+       ============================================================ */
+    #loader {
+      position: fixed;
+      inset: 0;
+      background: var(--body-bg);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease, visibility 0.5s;
+    }
+    #loader.hidden {
+      opacity: 0;
+      visibility: hidden;
+      pointer-events: none;
+    }
+    .loader-spinner {
+      width: 48px;
+      height: 48px;
+      border: 5px solid var(--border-light);
+      border-top-color: var(--primary);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+    #loader p {
+      margin-top: 16px;
+      font-weight: 500;
+      color: var(--text-light);
+    }
+
+    /* ============================================================
+       SCROLL PROGRESS BAR
+       ============================================================ */
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      width: 0%;
+      z-index: 1000;
+      transition: width 0.1s;
+      border-radius: 0 2px 2px 0;
+    }
+
+    /* ============================================================
+       NAVBAR
+       ============================================================ */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 999;
+      background: var(--navbar-bg);
+      backdrop-filter: blur(16px) saturate(180%);
+      -webkit-backdrop-filter: blur(16px) saturate(180%);
+      border-bottom: 1px solid var(--glass-border);
+      box-shadow: var(--navbar-shadow);
+      transition: background 0.3s, box-shadow 0.3s;
+      height: 72px;
+      display: flex;
+      align-items: center;
+    }
+
+    .nav-container {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+    }
+
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      letter-spacing: -0.5px;
+      color: var(--text-color);
+    }
+    .logo span {
+      color: var(--primary);
+    }
+
+    .nav-menu {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .nav-menu li a {
+      padding: 8px 16px;
+      border-radius: 40px;
+      font-weight: 500;
+      font-size: 0.95rem;
+      transition: background 0.2s, color 0.2s;
+      color: var(--text-light);
+    }
+    .nav-menu li a:hover,
+    .nav-menu li a.active {
+      background: var(--primary);
+      color: #fff;
+    }
+
+    .theme-toggle {
+      background: transparent;
+      border: none;
+      font-size: 1.25rem;
+      color: var(--text-color);
+      cursor: pointer;
+      padding: 8px;
+      border-radius: 50%;
+      transition: background 0.2s;
+      width: 44px;
+      height: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .theme-toggle:hover {
+      background: var(--glass-bg);
+    }
+
+    .mobile-toggle {
+      display: none;
+      background: transparent;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--text-color);
+      cursor: pointer;
+      padding: 8px;
+    }
+
+    /* ============================================================
+       SECTION HEADER
+       ============================================================ */
+    .section-header {
+      text-align: center;
+      margin-bottom: 48px;
+    }
+    .section-tag {
+      display: inline-block;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--primary);
+      background: rgba(37, 99, 235, 0.08);
+      padding: 4px 16px;
+      border-radius: 40px;
+      margin-bottom: 8px;
+    }
+    .section-header h2 {
+      font-size: 2.4rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    .section-header p {
+      color: var(--text-light);
+      margin-top: 8px;
+    }
+
+    /* ============================================================
+       GLASS UTILITY
+       ============================================================ */
+    .glass {
+      background: var(--glass-bg) !important;
+      backdrop-filter: blur(12px) saturate(180%);
+      -webkit-backdrop-filter: blur(12px) saturate(180%);
+      border: 1px solid var(--glass-border);
+    }
+
+    /* ============================================================
+       BUTTONS
+       ============================================================ */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      border: none;
+      cursor: pointer;
+      transition: all 0.25s;
+      background: var(--white);
+      color: var(--text);
+      box-shadow: var(--shadow);
+    }
+    .btn-primary {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 8px 24px -6px var(--primary);
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 32px -8px var(--primary);
+    }
+    .btn-small {
+      padding: 8px 18px;
+      font-size: 0.85rem;
+    }
+    .btn-github {
+      background: var(--dark);
+      color: #fff;
+      border: none;
+    }
+    .btn-github:hover {
+      background: #1f2937;
+      transform: translateY(-2px);
+    }
+    .btn-live {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+    }
+    .btn-live:hover {
+      background: var(--secondary);
+      transform: translateY(-2px);
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 12px;
+      margin-top: 8px;
+    }
+    .social-icons a {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      color: var(--text-color);
+      transition: all 0.25s;
+    }
+    .social-icons a:hover {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+      transform: translateY(-3px);
+    }
+
+    /* ============================================================
+       CTA
+       ============================================================ */
+    .cta-box {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 60px 40px;
+      text-align: center;
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--shadow);
+    }
+
+    /* ============================================================
+       FOOTER
+       ============================================================ */
+    .footer {
+      background: var(--card-bg);
+      border-top: 1px solid var(--glass-border);
+      padding: 48px 0 24px;
+      margin-top: 40px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 32px;
+    }
+    .footer-brand h3 {
+      font-size: 1.6rem;
+      font-weight: 700;
+    }
+    .footer-brand h3 span {
+      color: var(--primary);
+    }
+    .footer-brand p {
+      color: var(--text-light);
+      margin: 6px 0 12px;
+    }
+    .footer-links h4,
+    .footer-contact h4 {
+      font-weight: 600;
+      margin-bottom: 12px;
+    }
+    .footer-links a {
+      display: block;
+      color: var(--text-light);
+      padding: 4px 0;
+      transition: color 0.2s;
+    }
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+    .footer-contact p {
+      color: var(--text-light);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 4px 0;
+    }
+    .footer-contact p i {
+      width: 20px;
+      color: var(--primary);
+    }
+    .footer-bottom {
+      text-align: center;
+      border-top: 1px solid var(--glass-border);
+      padding-top: 24px;
+      color: var(--text-light);
+      font-size: 0.9rem;
+    }
+
+    /* ============================================================
+       SCROLL TO TOP
+       ============================================================ */
+    .scroll-top {
+      position: fixed;
+      bottom: 32px;
+      right: 32px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      font-size: 1.2rem;
+      box-shadow: 0 8px 24px rgba(37, 99, 235, 0.3);
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s;
+      z-index: 99;
+    }
+    .scroll-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+    .scroll-top:hover {
+      transform: scale(1.08);
+      background: var(--secondary);
+    }
+
+    /* ============================================================
+       PROJECTS PAGE SPECIFIC
+       ============================================================ */
+    .filter-buttons {
+      display: flex;
+      gap: 12px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 32px;
+    }
+    .filter-btn {
+      padding: 8px 24px;
+      border-radius: 40px;
+      border: 2px solid var(--border-light);
+      background: transparent;
+      font-weight: 600;
+      font-size: 0.9rem;
+      color: var(--text-light);
+      cursor: pointer;
+      transition: all 0.25s;
+      font-family: var(--font);
+    }
+    .filter-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+    .filter-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+    }
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+    }
+    .project-item {
+      transition: all 0.3s ease;
+      opacity: 1;
+      transform: scale(1);
+    }
+    .project-item.hidden {
+      display: none;
+    }
+    .project-card {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 24px;
+      box-shadow: var(--shadow);
+      transition: all 0.3s;
+      border: 1px solid var(--glass-border);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    .project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-hover);
+    }
+    .project-card .project-img {
+      height: 140px;
+      border-radius: var(--radius-sm);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 3rem;
+      color: #fff;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-card .project-img i {
+      font-size: 3rem;
+      color: rgba(255,255,255,0.9);
+    }
+    .project-card .project-img .overlay-icon {
+      position: absolute;
+      bottom: 12px;
+      right: 12px;
+      background: rgba(0,0,0,0.3);
+      padding: 6px 12px;
+      border-radius: 40px;
+      color: #fff;
+      font-size: 0.75rem;
+      backdrop-filter: blur(4px);
+    }
+    .project-card h3 {
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+    .project-card p {
+      color: var(--text-light);
+      font-size: 0.95rem;
+    }
+    .project-card .project-tech {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin: 4px 0;
+    }
+    .project-card .project-tech span {
+      background: var(--glass-bg);
+      padding: 2px 12px;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      color: var(--text-light);
+      border: 1px solid var(--border-light);
+    }
+    .project-card .project-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: 4px;
+      flex-wrap: wrap;
+    }
+    .project-card .project-actions .btn-small {
+      padding: 6px 16px;
+      font-size: 0.8rem;
+    }
+
+    /* Modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      backdrop-filter: blur(8px);
+      z-index: 2000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+    }
+    .modal-overlay.active {
+      display: flex;
+    }
+    .modal-content {
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      max-width: 560px;
+      width: 100%;
+      padding: 40px;
+      position: relative;
+      box-shadow: 0 40px 80px rgba(0,0,0,0.3);
+      animation: modalIn 0.3s ease;
+    }
+    @keyframes modalIn {
+      from { transform: scale(0.9) translateY(20px); opacity: 0; }
+      to { transform: scale(1) translateY(0); opacity: 1; }
+    }
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 20px;
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      color: var(--text-light);
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .modal-close:hover {
+      color: var(--primary);
+    }
+    .modal-content h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 12px;
+    }
+    .modal-content p {
+      color: var(--text-light);
+      line-height: 1.7;
+      margin-bottom: 12px;
+    }
+    .modal-content .modal-tech {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-bottom: 20px;
+    }
+    .modal-content .modal-tech span {
+      background: var(--glass-bg);
+      padding: 4px 16px;
+      border-radius: 40px;
+      font-size: 0.85rem;
+      border: 1px solid var(--border-light);
+    }
+    .modal-content .modal-actions {
+      display: flex;
+      gap: 12px;
+    }
+
+    /* ============================================================
+       REVEAL ANIMATIONS
+       ============================================================ */
+    .reveal-hidden {
+      opacity: 0;
+      transform: translateY(40px);
+      transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), 
+                  transform 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .reveal-visible {
+      opacity: 1 !important;
+      transform: translateY(0) !important;
+    }
+
+    /* ============================================================
+       RESPONSIVE
+       ============================================================ */
+    @media (max-width: 991px) {
+      .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+      .footer-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+      }
+    }
+
+    @media (max-width: 767px) {
+      body {
+        padding-top: 68px;
+      }
+      .navbar {
+        height: 64px;
+      }
+      .mobile-toggle {
+        display: block;
+      }
+      .nav-menu {
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        flex-direction: column;
+        background: var(--navbar-bg);
+        backdrop-filter: blur(16px) saturate(180%);
+        -webkit-backdrop-filter: blur(16px) saturate(180%);
+        padding: 16px 24px 24px;
+        gap: 4px;
+        border-bottom: 1px solid var(--glass-border);
+        box-shadow: var(--shadow);
+        transform: translateY(-120%);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        border-radius: 0 0 var(--radius) var(--radius);
+      }
+      .nav-menu.open {
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+      }
+      .nav-menu li a {
+        display: block;
+        padding: 12px 16px;
+        width: 100%;
+        text-align: center;
+        border-radius: 12px;
+      }
+      .theme-toggle-li {
+        margin-top: 8px;
+      }
+      .theme-toggle {
+        width: 100%;
+        justify-content: center;
+        background: var(--glass-bg);
+        border-radius: 12px;
+        padding: 12px;
+      }
+      .section-padding {
+        padding: 56px 0;
+      }
+      .projects-grid {
+        grid-template-columns: 1fr;
+        max-width: 420px;
+        margin: 0 auto;
+      }
+      .filter-buttons {
+        gap: 8px;
+      }
+      .filter-btn {
+        padding: 6px 16px;
+        font-size: 0.8rem;
+      }
+      .cta-box {
+        padding: 40px 24px;
+      }
+      .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        text-align: center;
+      }
+      .footer-brand .social-icons {
+        justify-content: center;
+      }
+      .footer-contact p {
+        justify-content: center;
+      }
+      .scroll-top {
+        bottom: 20px;
+        right: 20px;
+        width: 44px;
+        height: 44px;
+        font-size: 1rem;
+      }
+      .modal-content {
+        padding: 28px 20px;
+      }
+    }
+
+    @media (max-width: 575px) {
+      .container {
+        padding: 0 16px;
+      }
+      .section-header h2 {
+        font-size: 1.6rem;
+      }
+      .cta-box {
+        padding: 32px 16px;
+      }
+      .project-card {
+        padding: 16px;
+      }
+      .project-card .project-img {
+        height: 100px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Loading Screen -->
+  <div id="loader" aria-label="Loading screen" role="status">
+    <div class="loader-spinner"></div>
+    <p>Loading…</p>
+  </div>
+
+  <!-- Scroll Progress Bar -->
+  <div id="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+
+  <!-- Navbar -->
+  <header class="navbar" role="navigation" aria-label="Main navigation">
+    <div class="container nav-container">
+      <a href="index.html" class="logo" aria-label="Pranjali Yadav home">Pranjali<span>.</span></a>
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <i class="fas fa-bars"></i>
+      </button>
+      <ul class="nav-menu" id="navMenu" role="menubar">
+        <li role="none"><a href="index.html" role="menuitem">Home</a></li>
+        <li role="none"><a href="about.html" role="menuitem">About</a></li>
+        <li role="none"><a href="skills.html" role="menuitem">Skills</a></li>
+        <li role="none"><a href="projects.html" class="active" role="menuitem">Projects</a></li>
+        <li role="none"><a href="contact.html" role="menuitem">Contact</a></li>
+        <li role="none" class="theme-toggle-li">
+          <button id="themeToggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+            <i class="fas fa-moon"></i>
+          </button>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <!-- PROJECTS SECTION -->
+    <section class="section-padding" aria-label="Projects section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Portfolio</span>
+          <h2>My Projects</h2>
+          <p>Showcasing my work and development journey</p>
+        </div>
+
+        <!-- Filter Buttons -->
+        <div class="filter-buttons" role="tablist" aria-label="Filter projects">
+          <button class="filter-btn active" data-filter="all" role="tab">All</button>
+          <button class="filter-btn" data-filter="web" role="tab">Web</button>
+          <button class="filter-btn" data-filter="app" role="tab">Apps</button>
+          <button class="filter-btn" data-filter="design" role="tab">Design</button>
+        </div>
+
+        <!-- Projects Grid -->
+        <div class="projects-grid" id="projectsGrid">
+          <!-- Project 1: Portfolio Website -->
+          <div class="project-item" data-category="web">
+            <div class="project-card glass">
+              <div class="project-img" style="background: linear-gradient(135deg, #2563EB, #7C3AED);">
+                <i class="fas fa-laptop-code"></i>
+                <span class="overlay-icon"><i class="fas fa-eye"></i> View</span>
+              </div>
+              <h3 class="project-title">Portfolio Website</h3>
+              <p class="project-desc">Modern personal portfolio with dark mode, glassmorphism, and smooth animations.</p>
+              <div class="project-tech">
+                <span>HTML5</span><span>CSS3</span><span>JavaScript</span>
+              </div>
+              <div class="project-actions">
+                <a href="#" class="btn btn-small btn-github"><i class="fab fa-github"></i> Code</a>
+                <a href="#" class="btn btn-small btn-live"><i class="fas fa-external-link-alt"></i> Live</a>
+                <button class="btn btn-small" style="background: var(--glass-bg);" data-modal-target="#modal1"><i class="fas fa-info-circle"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 2: Student Management System -->
+          <div class="project-item" data-category="app">
+            <div class="project-card glass">
+              <div class="project-img" style="background: linear-gradient(135deg, #06B6D4, #2563EB);">
+                <i class="fas fa-users"></i>
+                <span class="overlay-icon"><i class="fas fa-eye"></i> View</span>
+              </div>
+              <h3 class="project-title">Student Management System</h3>
+              <p class="project-desc">Full-featured system to manage student records, courses, and grades.</p>
+              <div class="project-tech">
+                <span>Python</span><span>SQL</span><span>Flask</span>
+              </div>
+              <div class="project-actions">
+                <a href="#" class="btn btn-small btn-github"><i class="fab fa-github"></i> Code</a>
+                <a href="#" class="btn btn-small btn-live"><i class="fas fa-external-link-alt"></i> Live</a>
+                <button class="btn btn-small" style="background: var(--glass-bg);" data-modal-target="#modal2"><i class="fas fa-info-circle"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 3: Calculator -->
+          <div class="project-item" data-category="web">
+            <div class="project-card glass">
+              <div class="project-img" style="background: linear-gradient(135deg, #7C3AED, #06B6D4);">
+                <i class="fas fa-calculator"></i>
+                <span class="overlay-icon"><i class="fas fa-eye"></i> View</span>
+              </div>
+              <h3 class="project-title">Calculator App</h3>
+              <p class="project-desc">Interactive calculator with history, keyboard support, and dark theme.</p>
+              <div class="project-tech">
+                <span>JavaScript</span><span>CSS3</span><span>HTML5</span>
+              </div>
+              <div class="project-actions">
+                <a href="#" class="btn btn-small btn-github"><i class="fab fa-github"></i> Code</a>
+                <a href="#" class="btn btn-small btn-live"><i class="fas fa-external-link-alt"></i> Live</a>
+                <button class="btn btn-small" style="background: var(--glass-bg);" data-modal-target="#modal3"><i class="fas fa-info-circle"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 4: Library Management System -->
+          <div class="project-item" data-category="app">
+            <div class="project-card glass">
+              <div class="project-img" style="background: linear-gradient(135deg, #F59E0B, #EF4444);">
+                <i class="fas fa-book"></i>
+                <span class="overlay-icon"><i class="fas fa-eye"></i> View</span>
+              </div>
+              <h3 class="project-title">Library Management System</h3>
+              <p class="project-desc">Manage books, members, and transactions with a clean admin interface.</p>
+              <div class="project-tech">
+                <span>Python</span><span>SQLite</span><span>Flask</span>
+              </div>
+              <div class="project-actions">
+                <a href="#" class="btn btn-small btn-github"><i class="fab fa-github"></i> Code</a>
+                <a href="#" class="btn btn-small btn-live"><i class="fas fa-external-link-alt"></i> Live</a>
+                <button class="btn btn-small" style="background: var(--glass-bg);" data-modal-target="#modal4"><i class="fas fa-info-circle"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 5: To-Do List -->
+          <div class="project-item" data-category="web">
+            <div class="project-card glass">
+              <div class="project-img" style="background: linear-gradient(135deg, #8B5CF6, #EC4899);">
+                <i class="fas fa-tasks"></i>
+                <span class="overlay-icon"><i class="fas fa-eye"></i> View</span>
+              </div>
+              <h3 class="project-title">To-Do List App</h3>
+              <p class="project-desc">Task management with drag-and-drop, categories, and persistent storage.</p>
+              <div class="project-tech">
+                <span>JavaScript</span><span>LocalStorage</span><span>CSS3</span>
+              </div>
+              <div class="project-actions">
+                <a href="#" class="btn btn-small btn-github"><i class="fab fa-github"></i> Code</a>
+                <a href="#" class="btn btn-small btn-live"><i class="fas fa-external-link-alt"></i> Live</a>
+                <button class="btn btn-small" style="background: var(--glass-bg);" data-modal-target="#modal5"><i class="fas fa-info-circle"></i></button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Project 6: E-Commerce UI Design -->
+          <div class="project-item" data-category="design">
+            <div class="project-card glass">
+              <div class="project-img" style="background: linear-gradient(135deg, #10B981, #059669);">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="overlay-icon"><i class="fas fa-eye"></i> View</span>
+              </div>
+              <h3 class="project-title">E-Commerce UI Design</h3>
+              <p class="project-desc">High-fidelity e-commerce interface with product cards and checkout flow.</p>
+              <div class="project-tech">
+                <span>Figma</span><span>UI/UX</span><span>Prototype</span>
+              </div>
+              <div class="project-actions">
+                <a href="#" class="btn btn-small btn-github"><i class="fab fa-github"></i> Code</a>
+                <a href="#" class="btn btn-small btn-live"><i class="fas fa-external-link-alt"></i> Live</a>
+                <button class="btn btn-small" style="background: var(--glass-bg);" data-modal-target="#modal6"><i class="fas fa-info-circle"></i></button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- CTA -->
+        <div class="cta-box glass" style="text-align: center; padding: 40px; margin-top: 56px;">
+          <h3 style="font-size: 1.6rem; font-weight: 700;">More projects coming soon!</h3>
+          <p style="color: var(--text-light); margin: 8px 0 20px;">Check back for new work or reach out for collaborations.</p>
+          <a href="contact.html" class="btn btn-primary">Let's Work Together <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Modal Overlay -->
+  <div class="modal-overlay" id="modalOverlay" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-content">
+      <button class="modal-close" id="modalClose" aria-label="Close modal"><i class="fas fa-times"></i></button>
+      <h3 id="modalTitle">Project Title</h3>
+      <p id="modalDesc">Project description goes here.</p>
+      <div class="modal-tech" id="modalTech">
+        <span>HTML</span><span>CSS</span><span>JS</span>
+      </div>
+      <div class="modal-actions">
+        <a href="#" class="btn btn-small btn-github"><i class="fab fa-github"></i> View Code</a>
+        <a href="#" class="btn btn-small btn-live"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Hidden modal data -->
+  <div id="modal1" style="display: none;">
+    <div class="project-title">Portfolio Website</div>
+    <div class="project-desc">A modern personal portfolio built with HTML, CSS, and vanilla JavaScript. Features dark mode, glassmorphism, smooth animations, and fully responsive design.</div>
+    <div class="project-tech">HTML5 · CSS3 · JavaScript</div>
+  </div>
+  <div id="modal2" style="display: none;">
+    <div class="project-title">Student Management System</div>
+    <div class="project-desc">A full-stack web application for managing student records, courses, grades, and attendance. Built with Python Flask and SQLite.</div>
+    <div class="project-tech">Python · Flask · SQLite</div>
+  </div>
+  <div id="modal3" style="display: none;">
+    <div class="project-title">Calculator App</div>
+    <div class="project-desc">A feature-rich calculator with history, keyboard support, dark/light theme, and responsive design. Built with vanilla JavaScript.</div>
+    <div class="project-tech">JavaScript · CSS3 · HTML5</div>
+  </div>
+  <div id="modal4" style="display: none;">
+    <div class="project-title">Library Management System</div>
+    <div class="project-desc">A comprehensive library management system with book inventory, member management, transaction tracking, and admin dashboard.</div>
+    <div class="project-tech">Python · SQLite · Flask</div>
+  </div>
+  <div id="modal5" style="display: none;">
+    <div class="project-title">To-Do List App</div>
+    <div class="project-desc">A modern task management app with drag-and-drop functionality, categories, priority levels, and local storage persistence.</div>
+    <div class="project-tech">JavaScript · LocalStorage · CSS3</div>
+  </div>
+  <div id="modal6" style="display: none;">
+    <div class="project-title">E-Commerce UI Design</div>
+    <div class="project-desc">A high-fidelity e-commerce interface design with product listings, detailed product pages, shopping cart, and checkout flow created in Figma.</div>
+    <div class="project-tech">Figma · UI/UX · Prototype</div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <h3>Pranjali<span>.</span></h3>
+        <p>BCA Final Year · Developer &amp; Designer</p>
+        <div class="social-icons">
+          <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+          <a href="#" aria-label="GitHub"><i class="fab fa-github"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        </div>
+      </div>
+      <div class="footer-links">
+        <h4>Navigate</h4>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="skills.html">Skills</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <p><i class="fas fa-envelope"></i> pranjali@example.com</p>
+        <p><i class="fas fa-phone"></i> +91 98765 43210</p>
+        <p><i class="fas fa-map-marker-alt"></i> India</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 Pranjali Yadav. Built with <i class="fas fa-heart" style="color: #2563EB;"></i></p>
+    </div>
+  </footer>
+
+  <button id="scrollTopBtn" aria-label="Scroll to top" class="scroll-top"><i class="fas fa-chevron-up"></i></button>
+
+  <script src="js/script.js" defer></script>
+</body>
+</html>
