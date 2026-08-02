@@ -129,5 +129,5 @@ C:.
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/pranjali/portfolio.git
+   git clone https://github.com/chahatyadav336/pranjali-portfolio.git
    
